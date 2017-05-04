@@ -1,0 +1,22 @@
+<ivysettings>
+ <property name="ivy.local.default.root" 
+              value="${ivy.default.ivy.user.dir}/local2" override="false" />
+ <property name="ivy.local.default.ivy.pattern" 
+              value="[organisation]-[module]-ivy-[revision].xml" 
+              override="false" />
+ <property name="ivy.local.default.artifact.pattern" 
+              value="[organisation]-[module]-[artifact]-[revision].[ext]" 
+              override="false" />
+ <settings defaultResolver="myresolver" />
+ <resolvers>
+  <chain name="myresolver">
+   <filesystem name="mylocal">
+    <ivy 
+                 pattern="${ivy.local.default.root}/${ivy.local.default.ivy.pattern}" />
+    <artifact 
+                 pattern="${ivy.local.default.root}/${ivy.local.default.artifact.pattern}" />
+   </filesystem>
+   <ibiblio name="mypublic" m2compatible="true" />
+  </chain>
+ </resolvers>
+</ivysettings>

@@ -1,0 +1,8 @@
+Testsuite: filter.ccimpl.CCFilterTest
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.013 sec
+
+Testcase: testFilterNull took 0.002 sec
+Testcase: testFilterNullValues took 0 sec
+Testcase: testFilterNullPrefix took 0 sec
+Testcase: testFilter took 0.005 sec
+Testcase: testFilterWithNullValues took 0 sec

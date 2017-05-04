@@ -1,0 +1,14 @@
+<ivysettings>
+  <settings defaultResolver="dual-example"/>
+  <resolvers>
+    <dual name="dual-example">
+      <filesystem name="ivys">
+        <ivy pattern="${ivy.settings.dir}/../ivy-repository/[module]-ivy-[revision].xml" />
+      </filesystem>
+      <!-- <ibiblio name="ibiblio" m2compatible="true" usepoms="false" />-->
+      <filesystem name="jars">
+        <artifact pattern="${ivy.settings.dir}/../jar-repository/[module]-[revision].jar" />
+      </filesystem>
+    </dual>
+  </resolvers>
+</ivysettings>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!-- supply any target in the default -->
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="01-basic" default="install" basedir=".">
+	
+	<target name="install">
+			<ivy:install organisation="commons-lang" module="commons-lang" revision="2.6" transitive="true" overwrite="true" from="public" to="shared" />
+	</target>
+
+</project>

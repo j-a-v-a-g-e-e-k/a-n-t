@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+	<info organisation="com.jain" module="simplyivy" revision="1.0" status="release" publication="20160904161851"/>
+	<publications>
+		<artifact name="simpleivy" ext="jar"/>
+	</publications>
+	<dependencies>
+		<dependency org="log4j" name="log4j" rev="1.2.9"/>
+		<dependency org="junit" name="junit" rev="3.8"/>
+	</dependencies>
+</ivy-module>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!-- supply any target in the default -->
+<project name="01-basic" default="runApp" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="src.dir" value="src" />
+	<property name="lib.dir" value="lib"/>
+	<property name="build.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	<property name="main-class"  value="com.jain.MyApp"/>
+
+	<!-- Create a classpath container -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+	
+	<!-- Deletes the existing build and dist directory-->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Creates the  build and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" />
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+	</target>
+
+	<!--Creates the deployable jar file  -->
+	<target name="jar" depends="compile">
+		<jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" >
+			<!-- not needed -->
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Target to run the app -->
+    <target name="runApp" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${dist.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+	
+	<!-- Target to run junit test -->
+    <target name="runTest" depends="compile">
+        <junit printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>               
+            </classpath>            
+            <batchtest fork="true">
+                <fileset dir="${src.dir}" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+</project>
